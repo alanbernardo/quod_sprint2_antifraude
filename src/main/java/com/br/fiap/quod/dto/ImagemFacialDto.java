@@ -8,16 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDateTime;
 
 public record ImagemFacialDto(
-        @NotNull
-        MultipartFile imagemFacial,
 
-//        @NotNull
-//        LocalDateTime dataCaptura,
-
-        @NotNull
-        @Valid
-        MetadadosDto metadados) {
+        @NotNull MultipartFile imagemFacial,
+        @NotNull @Valid MetadadosDto metadados) {
 }
-/*private MultipartFile imagemFacial;
-    private LocalDateTime dataCaptura;
-    private Boolean validacao;*/
