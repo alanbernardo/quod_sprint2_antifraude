@@ -16,18 +16,31 @@ import java.time.LocalDateTime;
 public class BiometriaFacialService {
 
     @Autowired
-    private BiometriaFacialRepository biometriaRepository;
+    private BiometriaFacialRepository facialRepository;
+
 
     public BiometriaFacial salvarImagem(MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {
             throw new IllegalArgumentException("Arquivo não pode ser nulo ou vazio.");
         }
 
+        // Validação do tamanho do arquivo (máx 5MB)
+        if (file.getSize() > 5 * 1024 * 1024) {
+            throw new IllegalArgumentException("Imagem excede o tamanho máximo de 5MB.");
+        }
+
+        // Validação do tipo de conteúdo (formato)
+        String contentType = file.getContentType();
+        if (!("image/jpeg".equals(contentType) || "image/png".equals(contentType))) {
+            throw new IllegalArgumentException("Formato inválido. Apenas JPEG ou PNG são aceitos.");
+        }
+
         BiometriaFacial biometria = new BiometriaFacial();
         biometria.setImagemFacial(file.getBytes());
         biometria.setDataCaptura(LocalDateTime.now());
-        return biometriaRepository.save(biometria);
+        return facialRepository.save(biometria);
     }
+
 
     public BufferedImage converterParaBufferedImage(MultipartFile file) throws IOException {
         if (file == null || file.isEmpty()) {

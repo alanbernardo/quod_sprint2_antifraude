@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Document(collation = "notificacaoFraude")
+@Document(collection = "notificacaoFraude")
 public class NotificacaoFraude {
 
     @Id
@@ -21,12 +21,11 @@ public class NotificacaoFraude {
     private String notificacao;
     private Metadados metadados;
 
-    public NotificacaoFraude(){}
+    public NotificacaoFraude() {}
 
-    public NotificacaoFraude(
-            String transacaoId, String tipoBiometria, String tipoFraude,
-            LocalDateTime dataCaptura, Dispositivo dispositivo,
-            List<String> canalNotificacao, String notificacao, Metadados metadados) {
+    public NotificacaoFraude(String transacaoId, String tipoBiometria, String tipoFraude,
+                             LocalDateTime dataCaptura, Dispositivo dispositivo,
+                             List<String> canalNotificacao, String notificacao, Metadados metadados) {
         this.transacaoId = transacaoId;
         this.tipoBiometria = tipoBiometria;
         this.tipoFraude = tipoFraude;
