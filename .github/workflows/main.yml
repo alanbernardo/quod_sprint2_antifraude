@@ -1,27 +1,26 @@
-name: Build Java Spring Boot Project
+name: Construir Projeto Java Spring Boot
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ "principal" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Clonar repositório
         uses: actions/checkout@v3
 
-      - name: Configurar Java 21
+      - name: Instalar Java 17
         uses: actions/setup-java@v3
         with:
-          java-version: '21'
           distribution: 'temurin'
+          java-version: '17'
 
-      - name: Compilar com Maven
+      - name: Dar permissão para mvnw
+        run: chmod +x ./mvnw
+
+      - name: Build do projeto
         run: ./mvnw clean install
-
-      - name: Rodar testes
-        run: ./mvnw test
+s
