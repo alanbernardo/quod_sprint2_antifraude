@@ -23,4 +23,3 @@ jobs:
 
       - name: Build do projeto
         run: ./mvnw clean install
-s
