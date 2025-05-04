@@ -2,7 +2,7 @@ name: Construir Projeto Java Spring Boot
 
 on:
   push:
-    branches: [ "principal" ]
+    branches: [ "main" ]
 
 jobs:
   build:
