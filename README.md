@@ -1,3 +1,4 @@
 # Projeto Antifraude
 
-Este projeto simula validações antifraude com CI/CD usando GitHub Actions.
+Atualização para disparar o GitHub Actions
+
