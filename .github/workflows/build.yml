@@ -2,7 +2,7 @@ name: Build Java Project
 
 on:
   push:
-    branches: [ "principal" ]
+    branches: [ "main" ]
 
 jobs:
   build:
