@@ -1,0 +1,25 @@
+name: Construir Projeto Java Spring Boot
+
+on:
+  push:
+    branches: [ "principal" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Dar permissão para mvnw
+        run: chmod +x ./mvnw
+
+      - name: Build do projeto
+        run: ./mvnw clean install
